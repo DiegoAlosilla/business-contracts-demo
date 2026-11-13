@@ -1,0 +1,108 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "business-fraud-screening-v2",
+    "version": "2.0.0",
+    "description": "API Business ficticia para demos de diseño de canal."
+  },
+  "x-demo": true,
+  "paths": {
+    "/fraud-screenings": {
+      "post": {
+        "operationId": "businessFraudScreening",
+        "summary": "Evaluar señales de fraude para una solicitud",
+        "description": "Contrato ficticio de demostración. Evaluar señales de fraude para una solicitud.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "applicationId",
+                  "cxi"
+                ],
+                "properties": {
+                  "applicationId": {
+                    "type": "string"
+                  },
+                  "cxi": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "screeningId",
+                    "decision"
+                  ],
+                  "properties": {
+                    "screeningId": {
+                      "type": "string"
+                    },
+                    "decision": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referencia inexistente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

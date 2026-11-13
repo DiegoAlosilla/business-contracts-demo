@@ -1,0 +1,96 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "business-loan-eligibility-v1",
+    "version": "1.0.0",
+    "description": "API Business ficticia para demos de diseño de canal."
+  },
+  "x-demo": true,
+  "paths": {
+    "/customers/{cxi}/loan-eligibility": {
+      "get": {
+        "operationId": "businessLoanEligibility",
+        "summary": "Consultar elegibilidad preliminar para préstamos",
+        "description": "Contrato ficticio de demostración. Consultar elegibilidad preliminar para préstamos.",
+        "parameters": [
+          {
+            "name": "cxi",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "eligible",
+                    "reason"
+                  ],
+                  "properties": {
+                    "eligible": {
+                      "type": "boolean"
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referencia inexistente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

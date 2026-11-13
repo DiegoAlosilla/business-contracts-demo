@@ -1,0 +1,96 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "business-product-pricing-v2",
+    "version": "2.0.0",
+    "description": "API Business ficticia para demos de diseño de canal."
+  },
+  "x-demo": true,
+  "paths": {
+    "/products/{productId}/rates": {
+      "get": {
+        "operationId": "businessProductPricing",
+        "summary": "Consultar tasas y comisiones por producto",
+        "description": "Contrato ficticio de demostración. Consultar tasas y comisiones por producto.",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "annualRate",
+                    "feeAmount"
+                  ],
+                  "properties": {
+                    "annualRate": {
+                      "type": "number"
+                    },
+                    "feeAmount": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referencia inexistente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

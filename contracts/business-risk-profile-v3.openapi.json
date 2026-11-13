@@ -1,0 +1,96 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "business-risk-profile-v3",
+    "version": "3.0.0",
+    "description": "API Business ficticia para demos de diseño de canal."
+  },
+  "x-demo": true,
+  "paths": {
+    "/customers/{cxi}/risk-profile": {
+      "get": {
+        "operationId": "businessRiskProfile",
+        "summary": "Consultar perfil de riesgo vigente",
+        "description": "Contrato ficticio de demostración. Consultar perfil de riesgo vigente.",
+        "parameters": [
+          {
+            "name": "cxi",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "riskLevel",
+                    "asOf"
+                  ],
+                  "properties": {
+                    "riskLevel": {
+                      "type": "string"
+                    },
+                    "asOf": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referencia inexistente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

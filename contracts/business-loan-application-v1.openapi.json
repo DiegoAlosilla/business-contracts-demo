@@ -1,0 +1,108 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "business-loan-application-v1",
+    "version": "1.0.0",
+    "description": "API Business ficticia para demos de diseño de canal."
+  },
+  "x-demo": true,
+  "paths": {
+    "/loan-applications": {
+      "post": {
+        "operationId": "businessLoanApplication",
+        "summary": "Registrar e iniciar una solicitud de préstamo personal",
+        "description": "Contrato ficticio de demostración. Registrar e iniciar una solicitud de préstamo personal.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "cxi",
+                  "requestedAmount"
+                ],
+                "properties": {
+                  "cxi": {
+                    "type": "string"
+                  },
+                  "requestedAmount": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "applicationId",
+                    "status"
+                  ],
+                  "properties": {
+                    "applicationId": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referencia inexistente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "business-credit-assessment-v1",
+    "version": "1.0.0",
+    "description": "API Business ficticia para demos de diseño de canal."
+  },
+  "x-demo": true,
+  "paths": {
+    "/credit-assessments": {
+      "post": {
+        "operationId": "businessCreditAssessment",
+        "summary": "Evaluar riesgo crediticio del solicitante",
+        "description": "Contrato ficticio de demostración. Evaluar riesgo crediticio del solicitante.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "applicationId",
+                  "cxi",
+                  "requestedAmount"
+                ],
+                "properties": {
+                  "applicationId": {
+                    "type": "string"
+                  },
+                  "cxi": {
+                    "type": "string"
+                  },
+                  "requestedAmount": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "assessmentId",
+                    "decision",
+                    "approvedAmount"
+                  ],
+                  "properties": {
+                    "assessmentId": {
+                      "type": "string"
+                    },
+                    "decision": {
+                      "type": "string"
+                    },
+                    "approvedAmount": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referencia inexistente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

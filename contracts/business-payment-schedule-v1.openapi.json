@@ -1,0 +1,106 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "business-payment-schedule-v1",
+    "version": "1.0.0",
+    "description": "API Business ficticia para demos de diseño de canal."
+  },
+  "x-demo": true,
+  "paths": {
+    "/loans/{loanId}/payment-schedule": {
+      "get": {
+        "operationId": "businessPaymentSchedule",
+        "summary": "Consultar cronograma del préstamo desembolsado",
+        "description": "Contrato ficticio de demostración. Consultar cronograma del préstamo desembolsado.",
+        "parameters": [
+          {
+            "name": "loanId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "installments"
+                  ],
+                  "properties": {
+                    "installments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referencia inexistente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

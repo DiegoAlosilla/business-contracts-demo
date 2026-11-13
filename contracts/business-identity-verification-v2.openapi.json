@@ -1,0 +1,108 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "business-identity-verification-v2",
+    "version": "2.0.0",
+    "description": "API Business ficticia para demos de diseño de canal."
+  },
+  "x-demo": true,
+  "paths": {
+    "/identity-verifications": {
+      "post": {
+        "operationId": "businessIdentityVerification",
+        "summary": "Verificar identidad declarada del cliente",
+        "description": "Contrato ficticio de demostración. Verificar identidad declarada del cliente.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "cxi",
+                  "verificationToken"
+                ],
+                "properties": {
+                  "cxi": {
+                    "type": "string"
+                  },
+                  "verificationToken": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "verificationId",
+                    "decision"
+                  ],
+                  "properties": {
+                    "verificationId": {
+                      "type": "string"
+                    },
+                    "decision": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referencia inexistente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

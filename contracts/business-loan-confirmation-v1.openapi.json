@@ -1,0 +1,122 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "business-loan-confirmation-v1",
+    "version": "1.0.0",
+    "description": "API Business ficticia para demos de diseño de canal."
+  },
+  "x-demo": true,
+  "paths": {
+    "/loan-applications/{applicationId}/confirmations": {
+      "post": {
+        "operationId": "businessLoanConfirmation",
+        "summary": "Confirmar datos y aceptación de una simulación de préstamo",
+        "description": "Contrato ficticio de demostración. Confirmar datos y aceptación de una simulación de préstamo.",
+        "parameters": [
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "simulationId",
+                  "destinationAccountId",
+                  "accepted"
+                ],
+                "properties": {
+                  "simulationId": {
+                    "type": "string"
+                  },
+                  "destinationAccountId": {
+                    "type": "string"
+                  },
+                  "accepted": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "confirmationId",
+                    "status"
+                  ],
+                  "properties": {
+                    "confirmationId": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referencia inexistente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

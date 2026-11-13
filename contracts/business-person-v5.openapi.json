@@ -1,0 +1,100 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "business-person-v5",
+    "version": "5.0.0",
+    "description": "API Business ficticia para demos de diseño de canal."
+  },
+  "x-demo": true,
+  "paths": {
+    "/people/{cxi}": {
+      "get": {
+        "operationId": "businessPerson",
+        "summary": "Recuperar perfil del cliente por CXI",
+        "description": "Contrato ficticio de demostración. Recuperar perfil del cliente por CXI.",
+        "parameters": [
+          {
+            "name": "cxi",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "cxi",
+                    "personId",
+                    "documentStatus"
+                  ],
+                  "properties": {
+                    "cxi": {
+                      "type": "string"
+                    },
+                    "personId": {
+                      "type": "string"
+                    },
+                    "documentStatus": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referencia inexistente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

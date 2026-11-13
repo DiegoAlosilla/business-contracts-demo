@@ -1,0 +1,124 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "business-loan-simulation-v2",
+    "version": "2.0.0",
+    "description": "API Business ficticia para demos de diseño de canal."
+  },
+  "x-demo": true,
+  "paths": {
+    "/loan-simulations": {
+      "post": {
+        "operationId": "businessLoanSimulation",
+        "summary": "Simular cuota, tasa y plazo de un préstamo evaluado",
+        "description": "Contrato ficticio de demostración. Simular cuota, tasa y plazo de un préstamo evaluado.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "applicationId",
+                  "assessmentId",
+                  "amount",
+                  "termMonths"
+                ],
+                "properties": {
+                  "applicationId": {
+                    "type": "string"
+                  },
+                  "assessmentId": {
+                    "type": "string"
+                  },
+                  "amount": {
+                    "type": "number"
+                  },
+                  "termMonths": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "simulationId",
+                    "monthlyPayment",
+                    "annualRate",
+                    "termMonths"
+                  ],
+                  "properties": {
+                    "simulationId": {
+                      "type": "string"
+                    },
+                    "monthlyPayment": {
+                      "type": "number"
+                    },
+                    "annualRate": {
+                      "type": "number"
+                    },
+                    "termMonths": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referencia inexistente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
